@@ -2,6 +2,7 @@ from keras.datasets import mnist
 from keras import models
 from keras import layers
 from keras.utils import to_categorical
+import matplotlib.pyplot as plt
 
 
 (train_images, train_labels), (test_images, test_labels) = mnist.load_data()
@@ -33,3 +34,7 @@ test_labels = to_categorical(test_labels)
 network.fit(train_images, train_labels, batch_size=128, epochs=10)
 test_loss, test_accuracy = network.evaluate(test_images, test_labels)
 print(f'Test accuracy: {test_accuracy}')
+
+
+plt.imshow(test_images[0].reshape(28, 28))
+plt.show()
